@@ -1,0 +1,24 @@
+﻿use banco
+GO
+
+IF OBJECT_ID('Equipos', 'U') IS NOT NULL DROP TABLE Equipos
+IF OBJECT_ID('Usuarios', 'U') IS NOT NULL DROP TABLE Usuarios
+GO
+
+CREATE TABLE Usuarios
+(
+  UsuarioID int primary key,
+  Nombre varchar(50) not null,
+  CorreoElectronico varchar(100) not null,
+  Telefono varchar(20) null
+)
+GO
+
+CREATE TABLE Equipos
+(
+  EquipoID int primary key,
+  TipoEquipo varchar(50) not null,
+  Modelo varchar(50) not null,
+  UsuarioID int not null foreign key references Usuarios (UsuarioID)
+)
+GO
